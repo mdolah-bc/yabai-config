@@ -87,3 +87,8 @@ yabai -m signal --add event=window_title_changed action="${ubersicht_spaces_refr
 
 set +x
 printf "yabai: configuration loaded...\\n"
+
+# Workaround
+# https://github.com/ghostty-org/ghostty/issues/2006#issuecomment-2411704782
+yabai -m signal --add app='^Ghostty$' event=window_created action='yabai -m space --layout bsp'
+yabai -m signal --add app='^Ghostty$' event=window_destroyed action='yabai -m space --layout bsp'
